@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="DiplayDetails" method="post">
+  		<label for="mobile">Mobile number:</label>
+  		<input type="tel" id="mobile" name="mob" placeholder="Enter your mobile number" required>
+		<br> <br>
+  		<label for="password">Password:</label>
+  		<input type="password" id="password" name="pass" placeholder="Enter your password" required>
+
+  			<button type="submit">Submit</button>
+	</form>
+
+	<div id="output"></div>
+
+	<script>
+  		const form = document.querySelector('form');
+  		const output = document.querySelector('#output');
+
+  		form.addEventListener('submit', function(e) 
+		{
+    		e.preventDefault();
+    
+    		const mobile = document.querySelector('#mobile').value;
+    		const maskedMobile = mobile.replace(/^(\d{3})\d{4}(\d{3})$/, '$1****$2');
+    		const password = document.querySelector('#password').value;
+
+    		output.innerHTML = `
+      		<p>Mobile number: ${maskedMobile}</p>
+      		<p>Password: ${password}</p>`;
+  			});
+	</script>
+	
+</body>
+</html>
